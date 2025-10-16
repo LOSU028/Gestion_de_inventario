@@ -3,7 +3,7 @@ Repositorio de tarea para arquitecturas de software
 
 Instrucciones:
 
-Crear una máquina virutal de python:
+Crear una máquina virtual de python:
 virtualenv -p python3 env
 
 Correr la máquina virtual:
