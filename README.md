@@ -16,3 +16,5 @@ Correr la aplicación:
 python .\src\app.py 
 
 Usar algún servicio de http como POSTMAN para hacer los requests
+
+NOTA: Los resultados de los request se ven en la consola, no en el cliente http 
