@@ -74,19 +74,37 @@ class Author:
         
     @classmethod
     def delete_author(self,id):
+        # Regla de negocio: No permitir la eliminación de un autor si tiene libros asociados
+        books_database = open(r'src\data\books.json', 'r')
+        books = json.loads(books_database.read())
+        books_database.close() # Buena práctica cerrar el archivo después de leerlo
+
+        for book in books:
+            if book['author_id'] == id:
+                return f"Cannot delete author with id {id}: They have associated books."
+
+        # Si no se encontraron libros, proceder con la eliminación
         database = open(r'src\data\authors.json', 'r+')
         authors = json.loads(database.read())
-        database2 = open(r'src\data\authors.json', 'w')
-        database2.truncate()
-        aux = []
+        
+        author_to_delete = None
         for author in authors:
-            if author['id'] != id:
-                aux.append(author)
-        new_id = 0
-        for author in aux:
-            author['id'] = new_id + 1
-            new_id =+ 1
+            if author['id'] == id:
+                author_to_delete = author
+                break
+        
+        if not author_to_delete:
+            database.close()
+            return f"Author with id {id} not found"
+
+        authors.remove(author_to_delete)
+
+        # Re-indexar IDs
+        for i, author in enumerate(authors):
+            author['id'] = i + 1
+        
         database.seek(0)
-        print(aux)
-        json.dump(aux,database,indent=4)
-        return id
+        database.truncate()
+        json.dump(authors, database, indent=4)
+        database.close()
+        return f"Author with id {id} has been deleted."

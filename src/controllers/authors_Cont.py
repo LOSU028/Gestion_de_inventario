@@ -17,5 +17,5 @@ def update_author(id,name,last_name,nationality):
     return views.display_updated_author(id,updated_author)
 
 def delete_Author(id):
-    authors.Author.delete_author(id)
-    return views.display_deleted_author(id)
+    result = authors.Author.delete_author(id)
+    return views.display_deleted_message(result)

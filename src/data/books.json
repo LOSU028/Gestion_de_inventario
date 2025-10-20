@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Cien años de soledad",
+        "publication_year": 1967,
+        "price": 25.50,
+        "stock": 10,
+        "author_id": 1
+    },
+    {
+        "id": 2,
+        "title": "It",
+        "publication_year": 1986,
+        "price": 30.00,
+        "stock": 5,
+        "author_id": 2
+    },
+    {
+        "id": 3,
+        "title": "Los juegos del hambre",
+        "publication_year": 2008,
+        "price": 20.00,
+        "stock": 15,
+        "author_id": 3
+    }
+]
